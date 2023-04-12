@@ -1,0 +1,2 @@
+SELECT Fecha, MAX(Hora) as HoraFichaje, Codigo ,Alias FROM newschema.fichajes1 JOIN newschema.empleados1 ON fichajes1.IdEmpleado = empleados1.Codigo WHERE Fecha = DATE_FORMAT(NOW(), '%Y%m%d')   GROUP BY IdEmpleado HAVING COUNT(*) = 1 ORDER BY IdEmpleado ASC
+SELECT Codigo, Alias FROM newschema.empleados1 LEFT JOIN newschema.fichajes1 ON fichajes1.IdEmpleado = empleados1.Codigo AND Fecha = DATE_FORMAT(NOW(), '%Y%m%d') WHERE Activo = 1 AND Fecha IS NULL AND Hora IS NULL GROUP BY Codigo ORDER BY Codigo ASC
